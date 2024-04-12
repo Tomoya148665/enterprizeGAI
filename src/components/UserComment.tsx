@@ -6,7 +6,7 @@ const UserComment: FunctionComponent = () => {
       <img
         className="w-[31px] relative rounded-2xs h-[31px] object-cover"
         alt=""
-        src="/202011070001493w500-0-1@2x.png"
+        src="/202011070001493w500-0-2@2x.png"
       />
       <div className="flex-1 flex flex-col items-start justify-start gap-[10px]">
         <i className="self-stretch relative leading-[18px] font-light">

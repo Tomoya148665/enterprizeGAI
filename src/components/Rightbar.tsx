@@ -77,7 +77,7 @@ const Rightbar: FunctionComponent = () => {
             <img
               className="w-[15px] relative h-4 object-contain"
               alt=""
-              src="/vector2.png"
+              src="/vector.svg"
             />
             <div className="relative text-lg font-inter text-black text-left">
               ログアウト
