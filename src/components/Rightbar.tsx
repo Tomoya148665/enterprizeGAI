@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const Rightbar: FunctionComponent = () => {
   return (
-    <div className="self-stretch flex flex-col items-start justify-between py-2.5 px-0 h-[95vh] text-left text-mini text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 md:hidden">
+    <div className="self-start flex flex-col items-start justify-between py-2.5 px-0 h-[95vh] text-left text-mini text-black font-inter border-l-[0.8px] sticky top-0 border-solid border-darkgray-200 md:hidden">
       <div className="flex flex-col items-start justify-start py-0 px-[18px] gap-[20px]">
         <button className="cursor-pointer [border:none] py-3 px-12 bg-black self-stretch rounded-4xs flex flex-col items-center justify-center">
           <div className="relative text-lg font-inter text-white whitespace-pre-wrap text-left">
@@ -13,7 +13,7 @@ const Rightbar: FunctionComponent = () => {
           <img
             className="w-[21px] relative h-5 object-contain"
             alt=""
-            src="/vector.svg"
+            src="/vector.png"
           />
           <div className="relative">商談反省</div>
         </div>
@@ -21,7 +21,7 @@ const Rightbar: FunctionComponent = () => {
           <img
             className="w-[21px] relative h-5 object-contain"
             alt=""
-            src="/vector.svg"
+            src="/vector2.png"
           />
           <div className="relative">リード管理</div>
         </div>
@@ -29,7 +29,7 @@ const Rightbar: FunctionComponent = () => {
           <img
             className="w-[21px] relative h-5 object-contain"
             alt=""
-            src="/vector.svg"
+            src="/vector2.png"
           />
           <div className="relative">ロールプレイ復習</div>
         </div>
@@ -37,7 +37,7 @@ const Rightbar: FunctionComponent = () => {
           <img
             className="w-[21px] relative h-5 object-contain"
             alt=""
-            src="/vector.svg"
+            src="/vector2.png"
           />
           <div className="relative">スクリプト生成</div>
         </div>
@@ -45,7 +45,7 @@ const Rightbar: FunctionComponent = () => {
           <img
             className="w-[21px] relative h-5 object-contain"
             alt=""
-            src="/vector.svg"
+            src="/vector2.png"
           />
           <div className="relative">顧客データ分析</div>
         </div>
@@ -77,7 +77,7 @@ const Rightbar: FunctionComponent = () => {
             <img
               className="w-[15px] relative h-4 object-contain"
               alt=""
-              src="/vector.svg"
+              src="/vector2.png"
             />
             <div className="relative text-lg font-inter text-black text-left">
               ログアウト

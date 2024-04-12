@@ -1,9 +1,25 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 
-const Leftbar: FunctionComponent = () => {
+interface LeftbarProps {
+  setSelectedText: (text: string) => void;
+}
+
+const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
+  const [isDisplayed, setIsDisplayed] = useState(false);
+  const [isRotated, setIsRotated] = useState(false);
+
+  const toggleDisplay = () => {
+    setIsDisplayed(!isDisplayed);
+    setIsRotated(!isRotated);
+  };
+
+  const handleClick = (text: string) => () => {
+    setSelectedText(text);
+  };
+
   return (
-    <div className="self-stretch bg-lavender flex flex-col items-start justify-start h-[95vh] py-0 px-2 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid sticky top-0 border-lightgray-200 md:hidden">
-      <div className="flex flex-row items-start justify-center py-6 mx-auto gap-[88px]">
+    <div className="self-start bg-lavender flex flex-col items-start justify-start h-[100vh] py-0 px-2 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid sticky top-0 border-lightgray-200 md:hidden">
+      <div className="flex flex-row items-start justify-center py-6 px-[30px] mx-auto gap-[88px]">
         <div className="flex flex-row items-start justify-center">
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-extrabold font-inter text-mediumblue text-left inline-block">
             テンプレート
@@ -18,23 +34,56 @@ const Leftbar: FunctionComponent = () => {
         <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
           <div className="self-stretch flex flex-row items-center justify-between">
             <div className="flex flex-row items-center justify-center gap-[16px]">
-              <button className="cursor-pointer [border:none] p-0 bg-[transparent] w-[10px] relative h-[21px]  bg-[url('/public/image-3@3x.png')] bg-cover bg-no-repeat bg-[top]" />
+              <button
+                id="button-toggle-text"
+                onClick={toggleDisplay}
+                className={`cursor-pointer [border:none] p-0 bg-[transparent] w-[10px] relative h-[21px] bg-[url('/public/image-31@3x.png')] bg-cover bg-no-repeat bg-[top] ${
+                  isRotated ? "rotate-90" : ""
+                }`}
+              />
+
               <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-lg font-inter text-black text-left inline-block">
                 営業部
               </button>
             </div>
             <div className="relative">5件</div>
           </div>
-          <div className="self-stretch flex flex-col items-start justify-start py-0 pr-0 pl-8 gap-[16px] text-base text-black">
-            <div className="self-stretch relative">
+          <div
+            id="toggle-display"
+            className={`toggle-display ${
+              isDisplayed ? "block" : "hidden"
+            } self-stretch flex flex-col items-start justify-start py-0 pr-0 pl-4 gap-[16px] text-base text-gray-100 `}
+          >
+            <button
+              onClick={handleClick("顧客の質問への返答生成")}
+              className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
+            >
               ・顧客の質問への返答生成
-            </div>
-            <div className="self-stretch relative">・競合製品との比較</div>
-            <div className="self-stretch relative">
+            </button>
+            <button
+              onClick={handleClick("競合製品との比較")}
+              className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
+            >
+              ・競合製品との比較
+            </button>
+            <button
+              onClick={handleClick("プレゼンテーション概要の作成")}
+              className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
+            >
               ・プレゼンテーション概要の作成
-            </div>
-            <div className="self-stretch relative">・FAQセクションの更新</div>
-            <div className="self-stretch relative">・販売戦略の提案</div>
+            </button>
+            <button
+              onClick={handleClick("FAQセクションの更新")}
+              className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
+            >
+              ・FAQセクションの更新
+            </button>
+            <button
+              onClick={handleClick("販売戦略の提案")}
+              className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
+            >
+              ・販売戦略の提案
+            </button>
           </div>
         </div>
         <div className="self-stretch flex flex-row items-center justify-between">

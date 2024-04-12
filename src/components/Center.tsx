@@ -2,10 +2,22 @@ import { FunctionComponent } from "react";
 import UserComment from "./UserComment";
 import AIComment from "./AIComment";
 
-const Center: FunctionComponent = () => {
+interface CenterProps {
+  selectedText: string;
+  setSelectedText: (text: string) => void;
+}
+
+const Center: FunctionComponent<CenterProps> = ({
+  selectedText,
+  setSelectedText,
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedText(event.target.value);
+  };
+
   return (
     <div className="self-stretch flex-1 flex flex-col items-start justify-between text-left text-base text-black font-inter">
-      <div className="self-stretch bg-snow flex flex-row items-center justify-between py-[19px] px-8">
+      <div className="self-stretch bg-snow flex flex-row items-center justify-between pt-[19px] pb-[27px] px-8">
         <div className="flex flex-row items-center justify-start gap-[7px]">
           <b className="relative leading-[18px]">商談反省</b>
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] w-5 relative h-5 bg-[url('/public/image-6@3x.png')] bg-cover bg-no-repeat bg-[top]" />
@@ -24,7 +36,9 @@ const Center: FunctionComponent = () => {
         <div className="self-stretch flex flex-col items-center justify-start py-4 px-6">
           <div className="self-stretch shadow-[4px_4px_4px_rgba(0,_0,_0,_0.5),_-4px_-4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-between py-4 px-8 border-[1px] border-solid border-silver-200">
             <input
-              className="[border:none] [outline:none] font-light font-inter text-xs bg-[transparent] relative leading-[18px] italic text-darkgray-300 text-left"
+              value={selectedText}
+              onChange={handleChange}
+              className="[border:none] [outline:none] font-light font-inter text-xs w-full bg-[transparent] relative leading-[18px] italic placeholder-darkgray-300 text-left"
               placeholder="質問をどうぞ"
               type="text"
             />
