@@ -2,7 +2,7 @@ import React from "react";
 
 const Subheader = () => {
   return (
-    <div className="sticky top-[60px] self-stretch bg-snow flex flex-col ">
+    <div className="self-stretch bg-snow flex flex-col ">
       <div className="flex flex-row justify-between items-center self-stretch py-[19px] px-8">
         <div className="flex flex-row items-center justify-start gap-[7px]">
           <b className="relative leading-[18px]">商談反省</b>

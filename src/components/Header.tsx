@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const Header: FunctionComponent = () => {
   return (
-    <div className="sticky top-0 self-stretch flex flex-row items-center justify-between py-4 h-[5vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] border-solid border-lightgray-100">
+    <div className=" self-stretch flex flex-row items-center justify-between py-4 h-[5vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] border-solid border-lightgray-100">
       <img
         className="w-[210px] relative h-14 object-cover"
         alt=""

@@ -9,7 +9,7 @@ const Desktop: FunctionComponent = () => {
   const [selectedText, setSelectedText] = useState("");
 
   return (
-    <div className="w-full relative bg-white flex flex-col items-start justify-start">
+    <div className="overflow-hidden w-full relative bg-white flex flex-col items-start justify-start">
       <Header />
       <div className="self-stretch flex flex-row items-start justify-between">
         <Leftbar setSelectedText={setSelectedText} />

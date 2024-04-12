@@ -17,7 +17,7 @@ const Center: FunctionComponent<CenterProps> = ({
   const hiddenInput = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="self-stretch flex-1 flex flex-col items-start justify-between text-left text-base text-black font-inter">
+    <div className="overflow-auto self-stretch flex-1 flex flex-col items-start justify-between text-left text-base text-black font-inter">
       <div className="self-stretch flex-1 flex flex-col items-center justify-end gap-[10px] text-xs">
         <div className="self-stretch flex-1 flex flex-col items-start justify-start pt-0 px-0 pb-16 gap-[10px]">
           <UserComment />
@@ -31,7 +31,6 @@ const Center: FunctionComponent<CenterProps> = ({
               ref={hiddenInput}
             ></div>
             <textarea
-              value={selectedText}
               className="[border:none] [outline:none] font-light font-inter text-xs w-full h-full resize-none bg-[transparent] relative leading-[18px] italic placeholder-darkgray-300 text-left"
               placeholder="質問をどうぞ"
               onChange={(e) => {
