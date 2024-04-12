@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Leftbar from "../components/Leftbar";
 import Center from "../components/Center";
 import Rightbar from "../components/Rightbar";
+import Subheader from "../components/Subheader";
 
 const Desktop: FunctionComponent = () => {
   const [selectedText, setSelectedText] = useState("");
@@ -12,7 +13,13 @@ const Desktop: FunctionComponent = () => {
       <Header />
       <div className="self-stretch flex flex-row items-start justify-between">
         <Leftbar setSelectedText={setSelectedText} />
-        <Center selectedText={selectedText} setSelectedText={setSelectedText} />
+        <div className="self-stretch grow flex-col">
+          <Subheader />
+          <Center
+            selectedText={selectedText}
+            setSelectedText={setSelectedText}
+          />
+        </div>
         <Rightbar />
       </div>
     </div>

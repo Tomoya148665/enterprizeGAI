@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { buttonTexts } from "../constants/buttonText";
 
 interface LeftbarProps {
   setSelectedText: (text: string) => void;
@@ -18,7 +19,7 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
   };
 
   return (
-    <div className="self-start bg-lavender flex flex-col items-start justify-start h-[100vh] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid sticky top-0 border-lightgray-200 md:hidden">
+    <div className="flex-grow self-start bg-lavender flex flex-col items-start justify-start h-[95vh] w-[800px] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid sticky top-[60px] border-lightgray-200 md:hidden">
       <div className="flex flex-row items-start justify-center py-6 px-[20px] mx-auto gap-[88px]">
         <div className="flex flex-row items-start justify-center">
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-extrabold font-inter text-mediumblue underline decoration-2 underline-offset-8 text-left inline-block">
@@ -55,31 +56,31 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
             } self-stretch flex flex-col items-start justify-start py-0 pr-0 pl-4 gap-[16px] text-base text-gray-100 `}
           >
             <button
-              onClick={handleClick("顧客の質問への返答生成")}
+              onClick={handleClick(buttonTexts.responseToCustomer)}
               className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
             >
               ・顧客の質問への返答生成
             </button>
             <button
-              onClick={handleClick("競合製品との比較")}
+              onClick={handleClick(buttonTexts.compareProducts)}
               className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
             >
               ・競合製品との比較
             </button>
             <button
-              onClick={handleClick("プレゼンテーション概要の作成")}
+              onClick={handleClick(buttonTexts.presentationSummary)}
               className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
             >
               ・プレゼンテーション概要の作成
             </button>
             <button
-              onClick={handleClick("FAQセクションの更新")}
+              onClick={handleClick(buttonTexts.updateFAQ)}
               className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
             >
               ・FAQセクションの更新
             </button>
             <button
-              onClick={handleClick("販売戦略の提案")}
+              onClick={handleClick(buttonTexts.salesStrategy)}
               className="cursor-pointer [border:none] p-0 bg-[transparent] text-left self-stretch relative text-gray-600 hover:text-black"
             >
               ・販売戦略の提案
