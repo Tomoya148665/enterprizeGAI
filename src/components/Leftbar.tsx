@@ -21,7 +21,7 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
     <div className="self-start bg-lavender flex flex-col items-start justify-start h-[100vh] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid sticky top-0 border-lightgray-200 md:hidden">
       <div className="flex flex-row items-start justify-center py-6 px-[20px] mx-auto gap-[88px]">
         <div className="flex flex-row items-start justify-center">
-          <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-extrabold font-inter text-mediumblue text-left inline-block">
+          <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-extrabold font-inter text-mediumblue underline decoration-2 underline-offset-8 text-left inline-block">
             テンプレート
           </button>
         </div>
