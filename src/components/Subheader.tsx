@@ -2,8 +2,8 @@ import React from "react";
 
 const Subheader = () => {
   return (
-    <div className="self-stretch bg-snow flex flex-col ">
-      <div className="flex flex-row justify-between items-center self-stretch py-[19px] px-8">
+    <div className="self-stretch box-border bg-snow h-[5vh] flex flex-col ">
+      <div className="flex flex-row justify-between items-center self-stretch py-[10.9px] px-8">
         <div className="flex flex-row items-center justify-start gap-[7px]">
           <b className="relative leading-[18px]">商談反省</b>
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] w-5 relative h-5 bg-[url('/public/image-6@3x.png')] bg-cover bg-no-repeat bg-[top]" />

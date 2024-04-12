@@ -2,10 +2,10 @@ import { FunctionComponent } from "react";
 
 const Rightbar: FunctionComponent = () => {
   return (
-    <div className="self-start flex flex-col items-start justify-between py-2.5 px-0 h-[95vh] w-[600px] text-left text-mini text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 md:hidden">
-      <div className="flex flex-col items-start justify-start py-0 px-[18px] gap-[20px]">
-        <button className="cursor-pointer [border:none] py-3 px-12 bg-black self-stretch rounded-4xs flex flex-col items-center justify-center">
-          <div className="relative text-lg font-inter text-white whitespace-pre-wrap text-left">
+    <div className="self-start flex flex-col box-border items-start justify-between py-2.5 px-0 h-[90vh] w-[600px] text-left text-xs text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 md:hidden">
+      <div className="flex flex-col items-start justify-start w-full py-0 px-[18px] gap-[20px]">
+        <button className="cursor-pointer [border:none] py-3 w-[200px] bg-black self-stretch rounded-4xs flex flex-col items-center justify-center">
+          <div className="relative text-xs font-inter text-white whitespace-pre-wrap text-left">
             ＋ 新しい会話
           </div>
         </button>
@@ -52,14 +52,14 @@ const Rightbar: FunctionComponent = () => {
       </div>
       <div className="self-stretch flex flex-col items-start justify-start gap-[7.5px]">
         <div className="self-stretch relative box-border h-px border-t-[1px] border-solid border-darkgray-100" />
-        <div className="flex flex-col items-start justify-start pt-4 px-[18px] pb-2 gap-[8px]">
+        <div className="flex flex-col items-start justify-start pt-4 px-3 pb-2 gap-[8px]">
           <button className="cursor-pointer [border:none] p-0 bg-[transparent] flex flex-row items-center justify-center gap-[7.5px]">
             <img
               className="w-5 relative h-[22px] object-cover"
               alt=""
               src="/image-2@2x.png"
             />
-            <div className="relative text-lg font-light font-inter text-black text-left">
+            <div className="relative text-xs font-light font-inter text-black text-left">
               会話履歴をすべてクリア
             </div>
           </button>
@@ -69,7 +69,7 @@ const Rightbar: FunctionComponent = () => {
               alt=""
               src="/image-9@2x.png"
             />
-            <div className="relative text-lg font-inter text-black text-left">
+            <div className="relative text-xs font-inter text-black text-left">
               管理画面
             </div>
           </button>
@@ -79,7 +79,7 @@ const Rightbar: FunctionComponent = () => {
               alt=""
               src="/vector.svg"
             />
-            <div className="relative text-lg font-inter text-black text-left">
+            <div className="relative text-xs font-inter text-black text-left">
               ログアウト
             </div>
           </button>

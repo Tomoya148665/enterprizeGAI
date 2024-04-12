@@ -2,14 +2,14 @@ import { FunctionComponent } from "react";
 
 const Header: FunctionComponent = () => {
   return (
-    <div className=" self-stretch flex flex-row items-center justify-between py-4 h-[5vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] border-solid border-lightgray-100">
+    <div className=" self-stretch flex flex-row items-center justify-between py-4 h-[10vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] box-border border-solid border-lightgray-100">
       <img
-        className="w-[210px] relative h-14 object-cover"
+        className="w-auto relative h-10 object-cover"
         alt=""
         src="/image-8@2x.png"
       />
-      <div className="flex flex-row items-center justify-center gap-[34px]">
-        <div className="rounded-mini bg-whitesmoke overflow-hidden flex flex-row items-start justify-start py-[15px] px-5 gap-[10px] md:hidden">
+      <div className="flex flex-row box-border items-center justify-center gap-[34px]">
+        <div className="rounded-mini bg-whitesmoke overflow-hidden flex flex-row items-start justify-start py-[5px] px-5 gap-[10px] md:hidden">
           <input
             className="[border:none] [outline:none] font-inter text-sm bg-[transparent] w-[150px] relative text-dimgray text-left inline-block shrink-0"
             placeholder="Search"
