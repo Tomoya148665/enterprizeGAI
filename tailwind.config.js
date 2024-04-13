@@ -33,6 +33,8 @@ module.exports = {
       spacing: {},
       fontFamily: {
         inter: "Inter",
+        "noto-sans-jp": "'Noto Sans JP'",
+
       },
       borderRadius: {
         "4xs": "9px",

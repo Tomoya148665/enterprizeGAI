@@ -1,6 +1,18 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState, useCallback } from "react";
+import FrameComponent from "./FrameComponent";
+import PortalDrawer from "./PortalDrawer";
 
 const Header: FunctionComponent = () => {
+  const [isFrameOpen, setFrameOpen] = useState(false);
+
+  const openFrame = useCallback(() => {
+    setFrameOpen(true);
+  }, []);
+
+  const closeFrame = useCallback(() => {
+    setFrameOpen(false);
+  }, []);
+
   return (
     <div className=" self-stretch flex flex-row items-center justify-between py-4 h-[10vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] box-border border-solid border-lightgray-100">
       <img
@@ -28,6 +40,16 @@ const Header: FunctionComponent = () => {
         <button className="cursor-pointer [border:none] p-0 bg-[transparent] h-[42px] w-[42px] relative bg-[url('/public/image-10@3x.png')] bg-cover bg-no-repeat bg-[top] hidden md:flex" />
       </div>
     </div>
+ {isFrameOpen && (
+        <PortalDrawer
+          overlayColor="rgba(113, 113, 113, 0.3)"
+          placement="Right"
+          onOutsideClick={closeFrame}
+        >
+          <FrameComponent onClose={closeFrame} />
+        </PortalDrawer>
+      )}
+    </>
   );
 };
 
