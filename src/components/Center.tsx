@@ -1,16 +1,22 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
 import UserComment from "./UserComment";
 import AIComment from "./AIComment";
 import TextareaAutosize from "react-textarea-autosize";
+import Leftbar from "./Leftbar";
+import { Drawer, useMediaQuery } from "@mui/material";
 
 interface CenterProps {
   selectedText: string;
   setSelectedText: (text: string) => void;
+  setIsLeftbarOpen: (isOpen: boolean) => void;
+  isLeftbarOpen: boolean;
 }
 
 const Center: React.FunctionComponent<CenterProps> = ({
   selectedText,
   setSelectedText,
+  setIsLeftbarOpen,
+  isLeftbarOpen,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSelectedText(event.target.value);
@@ -19,6 +25,54 @@ const Center: React.FunctionComponent<CenterProps> = ({
   return (
     <div className="self-stretch flex-1 flex flex-col items-start justify-between h-[88vh] overflow-auto text-left text-base text-black font-inter">
       <div className="self-stretch flex-1 flex flex-col items-center justify-end gap-[10px] text-xs">
+        <div
+          className="fixed left-0 top-1/2 z-40 "
+          style={{
+            transform: "translateY(-50%) rotate(0deg) translateZ(0px)",
+          }}
+        >
+          <button
+            className="bg-transparent"
+            onClick={() => setIsLeftbarOpen(true)}
+          >
+            <span className="" data-state="closed">
+              <div className="flex h-[72px] w-8 items-center justify-center ">
+                <div className="flex h-6 w-6 flex-col items-center ">
+                  <div
+                    className="h-3 w-1 rounded-full bg-gray-100"
+                    style={{
+                      transform:
+                        "translateY(0.15rem) rotate(0deg) translateZ(0px)",
+                    }}
+                  ></div>
+                  <div
+                    className="h-3 w-1 rounded-full bg-gray-100"
+                    style={{
+                      transform:
+                        "translateY(-0.15rem) rotate(0deg) translateZ(0px)",
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <span
+                style={{
+                  position: "absolute",
+                  border: "0px",
+                  width: "1px",
+                  height: "1px",
+                  padding: "0px",
+                  margin: "-1px",
+                  overflow: "hidden",
+                  clip: "rect(0px, 0px, 0px, 0px)",
+                  whiteSpace: "nowrap",
+                  overflowWrap: "normal",
+                }}
+              >
+                Close sidebar
+              </span>
+            </span>
+          </button>
+        </div>
         <div className="self-stretch overflow-hidden flex-1 flex flex-col items-start justify-start pt-0 px-0 pb-16 gap-[10px]">
           <UserComment />
           <AIComment />
@@ -36,6 +90,16 @@ const Center: React.FunctionComponent<CenterProps> = ({
           </div>
         </div>
       </div>
+      <Drawer
+        anchor="left"
+        open={isLeftbarOpen}
+        onClose={() => setIsLeftbarOpen(false)}
+      >
+        <Leftbar
+          setSelectedText={setSelectedText}
+          setIsLeftbarOpen={setIsLeftbarOpen}
+        />
+      </Drawer>
     </div>
   );
 };
