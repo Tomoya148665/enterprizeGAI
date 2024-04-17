@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const UserComment: FunctionComponent = () => {
   return (
-    <div className="self-stretch bg-snow flex flex-row items-start justify-start pt-8 pb-12 pr-40 pl-[120px] gap-[10px] text-left text-xs text-black font-inter">
+    <div className="self-stretch bg-snow flex flex-row items-start justify-start pt-8 pb-12 pr-8 pl-4 md:pr-16 md:pl-12  ld:pr-[25%] ld:pl-[20%] gap-[10px] text-left text-xs text-black font-inter">
       <img
         className="w-[31px] relative rounded-2xs h-[31px] object-cover"
         alt=""

@@ -50,9 +50,18 @@ module.exports = {
       inherit: "inherit",
     },
     screens: {
-      md: {
-        max: "960px",
+      sm: {
+        min: "530px",
       },
+      ms: {
+        min: "700px",
+      },
+      md: {
+        min: "960px",
+      },
+      ld:{
+        min:"1120px"
+      }
     },
   },
   corePlugins: {
