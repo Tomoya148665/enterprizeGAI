@@ -1,13 +1,22 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
 import { buttonTexts } from "../constants/buttonText";
+import { useMediaQuery } from "@mui/material";
 
 interface LeftbarProps {
   setSelectedText: (text: string) => void;
+  setIsLeftbarOpen: (open: boolean) => void;
+  isLeftbarOpen:boolean;
 }
 
-const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
+const Leftbar: FunctionComponent<LeftbarProps> = ({
+  setSelectedText,
+  setIsLeftbarOpen,
+  isLeftbarOpen,
+}) => {
   const [isDisplayed, setIsDisplayed] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
+  const [activeButton, setActiveButton] = useState<string | null>('template');
+  
 
   const toggleDisplay = () => {
     setIsDisplayed(!isDisplayed);
@@ -18,19 +27,40 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
     setSelectedText(text);
   };
 
+  const handleButtonActive = (buttonName:string) => () => {
+    setActiveButton(buttonName);
+  }
+
+  const toggleSidebar = () =>{
+    setIsLeftbarOpen(!isLeftbarOpen)
+  }
+
   return (
-    <div className="flex-grow self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] w-[800px] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200 md:hidden">
-      <div className="flex flex-row items-start justify-between py-3 px-[20px] mx-auto w-[80%]">
-        <div className="flex flex-row items-start justify-center">
-          <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-extrabold font-inter text-mediumblue underline decoration-2 underline-offset-8 text-left inline-block">
-            テンプレート
+    <>
+<div
+      className={`flex-grow self-start bg-lavender box-border flex flex-col items-start justify-start h-[95vh] w-[800px] py-0 text-left text-lg text-gray-100 font-inter border-l-[1px] border-solid border-lightgray-200  ${
+        isLeftbarOpen ? 'block' : 'hidden' 
+      }`}
+    >      <div className="flex flex-row items-start justify-between py-3 px-[20px] mx-auto w-[80%]">
+        <div className="flex flex-row items-start justify-center ">
+        <button
+            className={`cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs font-inter ${
+              activeButton === 'template' ? 'text-mediumblue font-extrabold underline decoration-2 underline-offset-8' : 'text-black font-light'
+            }  text-left inline-block`}
+            onClick={handleButtonActive('template')}
+          >            テンプレート
           </button>
         </div>
-        <button className="cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs inline-block italic font-light font-inter text-black text-left">
-          参照データ
+        <button
+          className={`cursor-pointer [border:none] p-0 bg-[transparent] relative text-xs inline-block italic  font-inter ${
+            activeButton === 'data' ? 'text-mediumblue font-extrabold underline decoration-2 underline-offset-8' : 'text-black font-light'
+          }`}
+          onClick={handleButtonActive('data')}
+        >          参照データ
         </button>
       </div>
       <div className="self-stretch relative box-border h-px border-t-[1px] border-solid border-silver-100" />
+      {activeButton === 'template' && (
       <div className="self-stretch flex flex-col items-start justify-start pt-8 pb-0 pr-3 pl-6 gap-[16px]">
         <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
           <div className="self-stretch flex flex-row items-center justify-between">
@@ -133,7 +163,63 @@ const Leftbar: FunctionComponent<LeftbarProps> = ({ setSelectedText }) => {
           <div className="relative">6件</div>
         </div>
       </div>
+      )}
+      {activeButton === 'data' && (
+          <div className="self-stretch flex flex-col items-start justify-start gap-[16px] p-4">
+            参照データ：<br /><br />
+            XXXX
+          </div>)}
     </div>
+    <div
+          className={`fixed top-1/2 z-40 ${isLeftbarOpen ? 'left-60' : 'left-0'}`}
+          style={{
+            transform: "translateY(-50%) rotate(0deg) translateZ(0px)",
+          }}
+        >
+          <button
+            className="bg-transparent cursor-pointer"
+            onClick={toggleSidebar}
+          >
+      <span className="" data-state={isLeftbarOpen ? 'open' : 'closed'}>
+              <div className="flex h-[72px] w-8 items-center justify-center ">
+                <div className="flex h-6 w-6 flex-col items-center ">
+                  <div
+                    className="h-3 w-1 rounded-full bg-gray-100"
+                    style={{
+                      transform:
+                        "translateY(0.15rem) rotate(0deg) translateZ(0px)",
+                    }}
+                  ></div>
+                  <div
+                    className="h-3 w-1 rounded-full bg-gray-100"
+                    style={{
+                      transform:
+                        "translateY(-0.15rem) rotate(0deg) translateZ(0px)",
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <span
+                style={{
+                  position: "absolute",
+                  border: "0px",
+                  width: "1px",
+                  height: "1px",
+                  padding: "0px",
+                  margin: "-1px",
+                  overflow: "hidden",
+                  clip: "rect(0px, 0px, 0px, 0px)",
+                  whiteSpace: "nowrap",
+                  overflowWrap: "normal",
+                }}
+              >
+                Close sidebar
+              </span>
+            </span>
+          </button>
+        </div>
+</>
+    
   );
 };
 
