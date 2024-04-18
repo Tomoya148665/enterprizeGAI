@@ -10,7 +10,7 @@ const Header: FunctionComponent = () => {
       <img
         className="w-auto relative h-10 object-cover"
         alt=""
-        src="/image-8@2.png"
+        src="/image-8@2x.png"
       />
       <div className="flex flex-row box-border items-center justify-center gap-[34px]">
         <div className="rounded-mini bg-whitesmoke overflow-hidden flex flex-row items-start justify-start py-[5px] px-5 gap-[10px] md:hidden">

@@ -10,6 +10,7 @@ import { Drawer, useMediaQuery } from "@mui/material";
 const Desktop: FunctionComponent = () => {
   const [selectedText, setSelectedText] = useState("");
   const [isLeftbarOpen, setIsLeftbarOpen] = useState<boolean>(false);
+  const [text, setText] = useState('商談反省')
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -28,9 +29,10 @@ const Desktop: FunctionComponent = () => {
         <Leftbar
           setSelectedText={setSelectedText}
           setIsLeftbarOpen={setIsLeftbarOpen}
+          isLeftbarOpen={isLeftbarOpen}
         />
         <div className="self-stretch grow flex-col">
-          <Subheader />
+          <Subheader setText={setText} text={text}/>
           <Center
             selectedText={selectedText}
             setSelectedText={setSelectedText}
@@ -38,7 +40,7 @@ const Desktop: FunctionComponent = () => {
             isLeftbarOpen={isLeftbarOpen}
           />
         </div>
-        <Rightbar />
+        <Rightbar text={text}/>
       </div>
     </div>
   );

@@ -54,10 +54,10 @@ module.exports = {
         min: "530px",
       },
       ms: {
-        min: "700px",
-      },
-      md: {
         min: "960px",
+      },
+      md:{
+        max: "960px"
       },
       ld:{
         min:"1120px"
