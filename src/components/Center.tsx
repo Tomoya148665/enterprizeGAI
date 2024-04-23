@@ -77,7 +77,7 @@ const Center: React.FunctionComponent<CenterProps> = ({
           )}
         </div>
         <div className="self-stretch flex flex-col items-center justify-start z-1  sticky bottom-0 h-20 pb-4 px-6 bg-white">
-          <div className="self-stretch shadow-[4px_4px_4px_rgba(0,_0,_0,_0.5),_-4px_-4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-between bg-white py-4 px-8 border-[1px] border-solid border-silver-200">
+          <div className="absolute bottom-3 w-[80%] left-[50%] translate-x-[-50%]  self-stretch shadow-[4px_4px_4px_rgba(0,_0,_0,_0.5),_-4px_-4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-between bg-white py-4 px-8 border-[1px] border-solid border-silver-200">
             <TextareaAutosize
               value={selectedText}
               onChange={handleChange}
