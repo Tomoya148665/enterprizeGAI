@@ -33,8 +33,6 @@ module.exports = {
       spacing: {},
       fontFamily: {
         inter: "Inter",
-        "noto-sans-jp": "'Noto Sans JP'",
-
       },
       borderRadius: {
         "4xs": "9px",
@@ -52,9 +50,18 @@ module.exports = {
       inherit: "inherit",
     },
     screens: {
-      md: {
-        max: "960px",
+      sm: {
+        min: "530px",
       },
+      ms: {
+        min: "960px",
+      },
+      md:{
+        max: "960px"
+      },
+      ld:{
+        min:"1120px"
+      }
     },
   },
   corePlugins: {

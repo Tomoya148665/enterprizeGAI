@@ -1,17 +1,9 @@
-import { FunctionComponent, useState, useCallback } from "react";
-import FrameComponent from "./FrameComponent";
-import PortalDrawer from "./PortalDrawer";
+import { FunctionComponent, useState } from "react";
+import { Drawer } from "@mui/material";
+import DrawerMenu from "./DrawerMenu";
 
 const Header: FunctionComponent = () => {
-  const [isFrameOpen, setFrameOpen] = useState(false);
-
-  const openFrame = useCallback(() => {
-    setFrameOpen(true);
-  }, []);
-
-  const closeFrame = useCallback(() => {
-    setFrameOpen(false);
-  }, []);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <div className=" self-stretch flex flex-row items-center justify-between py-4 h-[10vh] px-[23px] text-left text-xl text-darkslategray font-inter border-b-[1px] box-border border-solid border-lightgray-100">
@@ -37,19 +29,15 @@ const Header: FunctionComponent = () => {
           alt=""
           src="/202011070001493w500-0-2@2x.png"
         />
-        <button className="cursor-pointer [border:none] p-0 bg-[transparent] h-[42px] w-[42px] relative bg-[url('/public/image-10@3x.png')] bg-cover bg-no-repeat bg-[top] hidden md:flex" />
+        <button
+          className="cursor-pointer [border:none] p-0 bg-[transparent] h-[42px] w-[42px] relative bg-[url('/public/image-10@3x.png')] bg-cover bg-no-repeat bg-[top] hidden md:flex"
+          onClick={() => setIsOpen(true)}
+        />
+        <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
+          <DrawerMenu closeDrawer={() => setIsOpen(false)} />
+        </Drawer>
       </div>
     </div>
- {isFrameOpen && (
-        <PortalDrawer
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Right"
-          onOutsideClick={closeFrame}
-        >
-          <FrameComponent onClose={closeFrame} />
-        </PortalDrawer>
-      )}
-    </>
   );
 };
 

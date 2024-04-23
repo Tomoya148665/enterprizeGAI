@@ -1,6 +1,10 @@
 import { FunctionComponent } from "react";
 
-const Rightbar: FunctionComponent = () => {
+interface RightbarProps{
+  text:string
+}
+
+const Rightbar: FunctionComponent<RightbarProps> = ({text}) => {
   return (
     <div className="self-start flex flex-col box-border items-start justify-between py-2.5 px-0 h-[90vh] w-[600px] text-left text-xs text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 md:hidden">
       <div className="flex flex-col items-start justify-start w-full py-0 px-[18px] gap-[20px]">
@@ -15,7 +19,7 @@ const Rightbar: FunctionComponent = () => {
             alt=""
             src="/vector.png"
           />
-          <div className="relative">商談反省</div>
+          <div className="relative">{text}</div>
         </div>
         <div className="flex flex-row items-center justify-center gap-[7.5px]">
           <img
