@@ -1,4 +1,10 @@
-import { FunctionComponent, useState, useEffect, KeyboardEvent } from "react";
+import {
+  FunctionComponent,
+  useState,
+  useEffect,
+  KeyboardEvent,
+  useRef,
+} from "react";
 import UserComment from "./UserComment";
 import AIComment from "./AIComment";
 import TextareaAutosize from "react-textarea-autosize";
@@ -22,7 +28,22 @@ const Center: React.FunctionComponent<CenterProps> = ({
   const [comments, setComments] = useState<
     Array<{ type: string; text: string }>
   >([]);
+  const [textareaHeight, setTextareaHeight] = useState(0);
+  const textareaRef = useRef<HTMLDivElement>(null);
   const [date, setDate] = useState<string>("");
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setTextareaHeight(
+        textareaRef.current ? textareaRef.current.scrollHeight : 0
+      );
+    };
+
+    updateHeight(); // 初回の高さの更新
+    window.addEventListener("resize", updateHeight); // ウィンドウのリサイズに対応
+    return () => window.removeEventListener("resize", updateHeight); // クリーンアップ
+  }, [selectedText]); // selectedTextが更新されたら高さを再計算
+
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSelectedText(event.target.value);
   };
@@ -76,8 +97,14 @@ const Center: React.FunctionComponent<CenterProps> = ({
             )
           )}
         </div>
-        <div className="self-stretch flex flex-col items-center justify-start z-1  sticky bottom-0 h-20 pb-4 px-6 bg-white">
-          <div className="absolute bottom-3 w-[80%] left-[50%] translate-x-[-50%]  self-stretch shadow-[4px_4px_4px_rgba(0,_0,_0,_0.5),_-4px_-4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-between bg-white py-4 px-8 border-[1px] border-solid border-silver-200">
+        <div
+          className="relative self-stretch flex flex-col items-center justify-start z-1  bottom-0 h-20 pb-4 px-6 bg-white"
+          style={{ height: `${textareaHeight}px` }}
+        >
+          <div
+            ref={textareaRef}
+            className="absolute bottom-3 w-[80%] left-[50%] translate-x-[-50%]  self-stretch shadow-[4px_4px_4px_rgba(0,_0,_0,_0.5),_-4px_-4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-between bg-white py-4 px-8 border-[1px] border-solid border-silver-200"
+          >
             <TextareaAutosize
               value={selectedText}
               onChange={handleChange}
