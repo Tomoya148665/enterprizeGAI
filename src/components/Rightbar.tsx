@@ -1,12 +1,22 @@
 import { FunctionComponent } from "react";
 
-interface RightbarProps{
-  text:string
+interface RightbarProps {
+  text: string;
+  setIsRightbarOpen: (open: boolean) => void;
+  isRightbarOpen: boolean;
 }
 
-const Rightbar: FunctionComponent<RightbarProps> = ({text}) => {
+const Rightbar: FunctionComponent<RightbarProps> = ({
+  text,
+  setIsRightbarOpen,
+  isRightbarOpen,
+}) => {
   return (
-    <div className="self-start flex flex-col box-border items-start justify-between py-2.5 px-0 h-[90vh] w-[600px] text-left text-xs text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 md:hidden">
+    <div
+      className={`self-start flex flex-col box-border items-start justify-between py-2.5 px-0 h-[90vh] w-[600px] text-left text-xs text-black font-inter border-l-[0.8px] border-solid border-darkgray-200 ${
+        isRightbarOpen ? "block" : "hidden"
+      }`}
+    >
       <div className="flex flex-col items-start justify-start w-full py-0 px-[18px] gap-[20px]">
         <button className="cursor-pointer [border:none] py-3 w-[200px] bg-black self-stretch rounded-4xs flex flex-col items-center justify-center">
           <div className="relative text-xs font-inter text-white whitespace-pre-wrap text-left">
