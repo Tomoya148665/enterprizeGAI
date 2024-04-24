@@ -10,7 +10,8 @@ import { Drawer, useMediaQuery } from "@mui/material";
 const Desktop: FunctionComponent = () => {
   const [selectedText, setSelectedText] = useState("");
   const [isLeftbarOpen, setIsLeftbarOpen] = useState<boolean>(false);
-  const [text, setText] = useState('商談反省')
+  const [isRightbarOpen, setIsRightbarOpen] = useState<boolean>(false);
+  const [text, setText] = useState("商談反省");
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -19,6 +20,14 @@ const Desktop: FunctionComponent = () => {
       setIsLeftbarOpen(false);
     } else {
       setIsLeftbarOpen(true);
+    }
+  }, [matches]);
+
+  useEffect(() => {
+    if (matches) {
+      setIsRightbarOpen(false);
+    } else {
+      setIsRightbarOpen(true);
     }
   }, [matches]);
 
@@ -32,15 +41,21 @@ const Desktop: FunctionComponent = () => {
           isLeftbarOpen={isLeftbarOpen}
         />
         <div className="self-stretch grow flex-col">
-          <Subheader setText={setText} text={text}/>
+          <Subheader setText={setText} text={text} />
           <Center
             selectedText={selectedText}
             setSelectedText={setSelectedText}
             setIsLeftbarOpen={setIsLeftbarOpen}
             isLeftbarOpen={isLeftbarOpen}
+            setIsRightbarOpen={setIsRightbarOpen}
+            isRightbarOpen={isRightbarOpen}
           />
         </div>
-        <Rightbar text={text}/>
+        <Rightbar
+          text={text}
+          setIsRightbarOpen={setIsRightbarOpen}
+          isRightbarOpen={isRightbarOpen}
+        />
       </div>
     </div>
   );

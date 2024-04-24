@@ -17,6 +17,8 @@ interface CenterProps {
   setSelectedText: (text: string) => void;
   setIsLeftbarOpen: (isOpen: boolean) => void;
   isLeftbarOpen: boolean;
+  setIsRightbarOpen: (open: boolean) => void;
+  isRightbarOpen: boolean;
 }
 
 const Center: React.FunctionComponent<CenterProps> = ({
@@ -24,6 +26,8 @@ const Center: React.FunctionComponent<CenterProps> = ({
   setSelectedText,
   setIsLeftbarOpen,
   isLeftbarOpen,
+  setIsRightbarOpen,
+  isRightbarOpen,
 }) => {
   const [comments, setComments] = useState<
     Array<{ type: string; text: string }>
@@ -80,8 +84,15 @@ const Center: React.FunctionComponent<CenterProps> = ({
     }
   };
 
+  const toggleLeftbar = () => {
+    setIsLeftbarOpen(!isLeftbarOpen);
+  };
+  const toggleRightbar = () => {
+    setIsRightbarOpen(!isRightbarOpen);
+  };
+
   return (
-    <div className="self-stretch flex-1 flex flex-col items-start justify-between h-[88vh] overflow-auto text-left text-base text-black font-inter">
+    <div className="relative self-stretch flex-1 flex flex-col items-start justify-between h-[88vh] overflow-auto text-left text-base text-black font-inter">
       <div className="self-stretch flex-1 flex flex-col items-center justify-end gap-[10px] text-xs">
         <div className="self-stretch overflow-hidden flex-1 flex flex-col items-start justify-start pt-0 px-0 pb-16 gap-[10px]">
           <UserComment
@@ -119,7 +130,23 @@ const Center: React.FunctionComponent<CenterProps> = ({
             />
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <button
+        className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 left-3 ${
+          isLeftbarOpen
+            ? "bg-[url('/public/Sidebutton@3x.png')]"
+            : "bg-[url('/public/CurvedSidebutton@3x.png')]"
+        } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
+        onClick={toggleLeftbar}
+      ></button>
+      <button
+        className={`absolute cursor-pointer border-none p-0 bg-transparent top-1/2 right-3 ${
+          isRightbarOpen
+            ? "bg-[url('/public/Sidebutton@3x.png')]"
+            : "bg-[url('/public/RightCurvedSidebutton@3x.png')]"
+        } bg-contain bg-no-repeat h-[26px] w-[10px] hover:brightness-50 hover:contrast-200`}
+        onClick={toggleRightbar}
+      ></button>
     </div>
   );
 };
